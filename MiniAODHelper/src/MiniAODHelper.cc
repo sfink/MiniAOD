@@ -527,22 +527,6 @@ MiniAODHelper::isGoodJet(const pat::Jet& iJet, const float iMinPt, const float i
   return true;
 }
 
-
-float MiniAODHelper::GetMuonRelIso(const pat::Muon& iMuon) const
-{
-  float result = 9999; 
-
-  double pfIsoCharged = iMuon.pfIsolationR03().sumChargedHadronPt;
-  double pfIsoNeutral = iMuon.pfIsolationR03().sumNeutralHadronEt + iMuon.pfIsolationR03().sumPhotonEt;
-
-  double pfIsoPUSubtracted = std::max( 0.0, pfIsoNeutral - 0.5*iMuon.pfIsolationR03().sumPUPt );
-
-  result = (pfIsoCharged + pfIsoPUSubtracted)/iMuon.pt();
-  
-  return result;
-}
-
-//overloaded
 float MiniAODHelper::GetMuonRelIso(const pat::Muon& iMuon,const coneSize::coneSize iconeSize, const corrType::corrType icorrType) const
 {
   //rho corrections based on phys14
@@ -609,21 +593,6 @@ float MiniAODHelper::GetMuonRelIso(const pat::Muon& iMuon,const coneSize::coneSi
   return result;
 }
 
-float MiniAODHelper::GetElectronRelIso(const pat::Electron& iElectron) const
-{
-  float result = 9999; 
-
-  double pfIsoCharged = iElectron.pfIsolationVariables().sumChargedHadronPt;
-  double pfIsoNeutral = iElectron.pfIsolationVariables().sumNeutralHadronEt + iElectron.pfIsolationVariables().sumPhotonEt;
-
-  double pfIsoPUSubtracted = std::max( 0.0, pfIsoNeutral - 0.5*iElectron.pfIsolationVariables().sumPUPt );
-
-  result = (pfIsoCharged + pfIsoPUSubtracted)/iElectron.pt();
-  
-  return result;
-}
-
-//overloaded
 float MiniAODHelper::GetElectronRelIso(const pat::Electron& iElectron,const coneSize::coneSize iconeSize, const corrType::corrType icorrType) const
 {
   //rho corrections based on phys14
