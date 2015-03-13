@@ -571,8 +571,13 @@ float MiniAODHelper::GetMuonRelIso(const pat::Muon& iMuon,const coneSize::coneSi
       pfIsoNeutral = iMuon.pfIsolationR04().sumNeutralHadronEt + iMuon.pfIsolationR04().sumPhotonEt;
       
       switch(icorrType){
-      case corrType::rhoEA: correction = useRho*EffArea; break;
-      case corrType::deltaBeta: correction =  0.5*iMuon.pfIsolationR04().sumPUPt; break;}
+      case corrType::rhoEA:
+         correction = useRho*EffArea;
+         break;
+      case corrType::deltaBeta:
+         correction =  0.5*iMuon.pfIsolationR04().sumPUPt;
+         break;
+      }
       
       pfIsoPUSubtracted = std::max( 0.0, pfIsoNeutral - correction );
       result = (pfIsoCharged + pfIsoPUSubtracted)/iMuon.pt();
@@ -588,8 +593,13 @@ float MiniAODHelper::GetMuonRelIso(const pat::Muon& iMuon,const coneSize::coneSi
       pfIsoNeutral = iMuon.pfIsolationR03().sumNeutralHadronEt + iMuon.pfIsolationR03().sumPhotonEt;
       
       switch(icorrType){
-      case corrType::rhoEA:  correction = useRho*EffArea; break;
-      case corrType::deltaBeta: correction = 0.5*iMuon.pfIsolationR03().sumPUPt; break;}
+      case corrType::rhoEA:
+         correction = useRho*EffArea;
+         break;
+      case corrType::deltaBeta:
+         correction = 0.5*iMuon.pfIsolationR03().sumPUPt;
+         break;
+      }
       
       pfIsoPUSubtracted = std::max( 0.0, pfIsoNeutral - correction );
       result = (pfIsoCharged + pfIsoPUSubtracted)/iMuon.pt();
@@ -643,8 +653,13 @@ float MiniAODHelper::GetElectronRelIso(const pat::Electron& iElectron,const cone
       pfIsoNeutral = iElectron.pfIsolationVariables().sumNeutralHadronEt + iElectron.pfIsolationVariables().sumPhotonEt;
       
       switch(icorrType){
-      case corrType::rhoEA:  correction = useRho*EffArea; break;
-      case corrType::deltaBeta: correction = 0.5*iElectron.pfIsolationVariables().sumPUPt; break;}
+      case corrType::rhoEA:
+         correction = useRho*EffArea;
+         break;
+      case corrType::deltaBeta:
+         correction = 0.5*iElectron.pfIsolationVariables().sumPUPt;
+         break;
+      }
       
       pfIsoPUSubtracted = std::max( 0.0, pfIsoNeutral - correction );
       result = (pfIsoCharged + pfIsoPUSubtracted)/iElectron.pt();
