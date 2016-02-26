@@ -697,6 +697,8 @@ MiniAODHelper::isGoodElectron(const pat::Electron& iElectron, const float iMinPt
     passesID = PassesMVAid80(iElectron);
     passesKinematics = ((iElectron.pt() >= minElectronPt) && (fabs(iElectron.eta()) <= maxElectronEta) && !inCrack);
     passesIso=0.15>=GetElectronRelIso(iElectron, coneSize::R03, corrType::rhoEA,effAreaType::spring15);
+    
+
     break;
   case electronID::electronEndOf15MVA90iso0p15:
     passesID = PassesMVAid90(iElectron);

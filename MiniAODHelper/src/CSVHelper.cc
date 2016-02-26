@@ -223,11 +223,10 @@ CSVHelper::getCSVWeight(std::vector<double> jetPts, std::vector<double> jetEtas,
         else if (jetAbsEta >= 1.6 && jetAbsEta < 2.41)
             iEta = 2;
 
-        if (iPt < 0 || iEta < 0)
-            std::cout << "Error, couldn't find Pt, Eta bins for this b-flavor jet, jetPt = " << jetPt
-                      << ", jetAbsEta = " << jetAbsEta << std::endl;
-
-        if (abs(flavor) == 5) {
+        if (iPt < 0 || iEta < 0){
+	  //std::cout << "Error, couldn't find Pt, Eta bins for this b-flavor jet, jetPt = " << jetPt    << ", jetAbsEta = " << jetAbsEta << std::endl;
+	}
+        else if (abs(flavor) == 5) {
 	    // RESET iPt to maximum pt bin (only 5 bins for new SFs)
 	    if(iPt>=nHFptBins){
 		iPt=nHFptBins-1;
