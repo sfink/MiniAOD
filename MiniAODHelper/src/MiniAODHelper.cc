@@ -781,19 +781,30 @@ MiniAODHelper::isGoodJet(const pat::Jet& iJet, const float iMinPt, const float i
   bool goodForMETCorrection = false;
   
   if(iJetID!=jetID::none){
-    loose = (
-		  iJet.neutralHadronEnergyFraction() < 0.99 &&
+
+    if( fabs(iJet.eta())<3.0 ){
+      loose = (
+	       iJet.neutralHadronEnergyFraction() < 0.99 &&
+	       iJet.neutralEmEnergyFraction() < 0.99 &&
+	       (iJet.chargedMultiplicity() + iJet.neutralMultiplicity() ) > 1
+	       );     
+
+      if( fabs(iJet.eta())<2.4 ){
+	loose = ( loose &&
+		  iJet.chargedHadronEnergyFraction() > 0.0 &&
 		  iJet.chargedEmEnergyFraction() < 0.99 &&
-		  iJet.neutralEmEnergyFraction() < 0.99 &&
-		  iJet.numberOfDaughters() > 1
+		  iJet.chargedMultiplicity() > 0
 		  );
-      
-    if( fabs(iJet.eta())<2.4 ){
-      loose = ( loose &&
-	      iJet.chargedHadronEnergyFraction() > 0.0 &&
-	      iJet.chargedMultiplicity() > 0
-	      );
+      }
     }
+
+    else {
+      loose = (
+	       iJet.neutralEmEnergyFraction() < 0.9 &&
+	       iJet.neutralMultiplicity() > 10
+	       );
+    }
+    
     
     if(iJetID==jetID::jetMETcorrection){ //only check this if asked, otherwise there could be problems
       goodForMETCorrection = (
