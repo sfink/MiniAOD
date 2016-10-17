@@ -140,7 +140,6 @@ SkimDilep::SkimDilep(const edm::ParameterSet& iConfig)
   //   throw cms::Exception("InconsistentConfigOptions") 
   //     << "You cannot set both forceMC and forceData to true for SkimDilep";
 
-
   std::string era = "2012_53x";
   int insample = 9125;
   analysisType::analysisType iAnalysisType = analysisType::LJ;
