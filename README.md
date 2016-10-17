@@ -1,7 +1,7 @@
 MiniAOD
 =======
 
-Tools for miniAOD exploration
+Tools for miniAOD exploration and such
 
 ## Installation
 Follow These Steps:
