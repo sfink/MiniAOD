@@ -56,7 +56,6 @@ void MiniAODHelper::SetUp(string iEra, int iSampleNumber, const analysisType::an
 
   // Awknowledge setup
   isSetUp = true;
-
 }
 
 void MiniAODHelper::SetUpPUWeights(const std::string& fileNameMCNPU,const std::string& histNameMCNPU,const std::string& fileNameDataNPUEstimated,const std::string& histNameDataNPUEstimated) {
